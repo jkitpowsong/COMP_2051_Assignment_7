@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title>jQuery CSS</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	
+	<script type="text/javascript">
+
+	timerId=null;
+	function bigger(){
+		cursize=parseInt($('textarea').css('font-size'));
+		$('textarea').css('font-size',(cursize+2)+'px');
+		if (cursize>50){
+			clearInterval(timerId);
+			timerId=null;
+		}
+	}
+	$(document).ready(function(){
+		$('textarea').attr('width','30').attr('height','4');
+		$('#biggerPimp').click(function(){
+				$('textarea').css('font-size','12px');
+				timerId=setInterval('bigger()',100);
+			
+		});
+		$('#check').change(function(){
+			if ($(this).is(':checked')){
+				$('textarea').css({'font-weight':'bold','color':'green','text-decoration':'underline'});
+				$('body').css('background-image','url("bg.png")');
+
+				alert('bold');
+			}
+			else {
+				$('textarea').css({'font-weight':'normal','color':'black','text-decoration':'none'});
+				$('body').css('background-image','none');
+
+				alert('normal');
+			}
+		});
+
+		$('#snoopify').click(function(){
+
+			inner=$('textarea').val();
+			inner=inner.toUpperCase();
+			inner=inner.split('\n');
+			inner=inner.join('-izzle\n');
+			$('textarea').val(inner);
+
+		});
+
+		$('#piglatin').click(function(){
+
+			inner=$('textarea').val();
+			inner=inner.replace('\n',' ');
+			inner=inner.split(' ');
+			for (i=0;i<inner.length;i++){
+				inner[i]=(inner[i].substr(1,1)).toUpperCase()+(inner[i].substr(2,inner[i].length-2))+(inner[i].substr(0,1)).toLowerCase()+'ay';
+			}
+			inner=inner.join(' ');
+			$('textarea').val(inner);
+
+		});
+
+	});
+	</script>
+<body>
+<form>
+  <fieldset>
+    <legend>Text</legend>
+    <textarea></textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>Pimpification</legend>
+    <input type="button" id="biggerPimp" value="biger pimp"  /><br /><br />
+    <input type="checkbox" id="check" /> <label>Bling</label><br /><br />
+    <input type="button" id="snoopify" value="snoopify"  /><br /><br />
+    <input type="button" id="piglatin" value="Igpay Atinlay"  /><br />
+  </fieldset>
+</form>
+
+</body>
+</html>
