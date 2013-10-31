@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item>
+		<number>0001</number>
+		<name>Brown Tote</name>
+		<price>50</price>
+	</item>
+	<item>
+		<number>0002</number>
+		<name>Purple pumps</name>
+		<price>45</price>
+	</item>
+	<item>
+		<number>0003</number>
+		<name>Orange watch</name>
+		<price>35</price>
+	</item>
+</items>
